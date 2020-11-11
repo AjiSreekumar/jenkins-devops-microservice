@@ -21,7 +21,7 @@ pipeline{
 				echo "BUILD_URL - $env.BUILD_URL"
 			}
 		}
-		stage('Build'){
+		stage('Compile'){
 			steps{
 				sh "mvn clean compile"
 			}
@@ -37,6 +37,33 @@ pipeline{
 			//	sh "mvn failsafe:integration-test failsafe:verify"
 			}
 		}
+		stage('Package'){
+			steps{
+				echo "Package"
+				sh "mvn package -DskipTests"
+			}
+		}
+		stage('Build Docker Image'){
+			steps{
+				echo "Build Docker Image"
+				//"docker build -t ajisreekumar/myworks:$env.BUILD_TAG"
+				script{
+					dockerImage = docker.build("ajisreekumar/myworks:${env.BUILD_TAG}")
+				}
+			}
+		}
+		stage('Push Docker Image'){
+			steps{
+				echo "Push Docker Image"
+				script{
+					docker.withRegistry('','dockerhub'){
+						dockerImage.push();
+						dockerImage.push('latest')
+					}
+				}
+			}
+		}
+
 	} 
 	post{
 		always{
