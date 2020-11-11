@@ -32,12 +32,12 @@ public class MsdpPortalUserControllerTest {
     
 
     @Test
-    public void imHealthy() throws Exception {
+    public void isHealthy() throws Exception {
         mvc.perform(get("/")).andExpect(status().isOk());
     }
 
     @Test
-    public void retrieveExchangeValue() throws Exception {
+    public void getSuppliersOfUser() throws Exception {
     	Mockito.when(msdpUserService.findSuppliersByUser("myuser")).thenReturn(new ArrayList<>(
     		    Arrays.asList(100, 102)
     			));

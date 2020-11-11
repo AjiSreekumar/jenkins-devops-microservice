@@ -13,6 +13,11 @@ public class MsdpPortalUserController {
 	@Autowired
 	private MsdpUserService msdpUserService;
 	
+	@GetMapping("/")
+	public String isHealthy() {
+		return "{healthy:true}";
+	}
+	
 	@GetMapping("/users/{userId}/suppliers")
 	public List<Integer> getSuppliersOfUser(@PathVariable String userId) {
 		
