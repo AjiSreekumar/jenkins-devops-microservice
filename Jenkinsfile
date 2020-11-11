@@ -7,7 +7,7 @@ pipeline{
 		mavenHome = tool 'myMaven'
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
 	}
-	stages{s
+	stages{
 		stage('Build'){
 			steps{
 				sh 'mvn --version'
