@@ -52,7 +52,7 @@ pipeline{
 				}
 			}
 		}
-		stage('Push Docker Image'){
+		/* stage('Push Docker Image'){
 			steps{
 				echo "Push Docker Image"
 				script{
@@ -62,7 +62,19 @@ pipeline{
 					}
 				}
 			}
+		} */
+		stage('Push to ECR'){
+			steps{
+				echo "Push Docker Image to AWS ECR"
+				script{
+					docker.withRegistry('https://570443433644.dkr.ecr.eu-west-2.amazonaws.com', 'ecr_repo:eu-west-2:aws-ecr'){
+						dockerImage.push();
+						dockerImage.push('latest')
+					}
+				}
+			}
 		}
+
 
 	} 
 	post{
