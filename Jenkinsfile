@@ -48,7 +48,7 @@ pipeline{
 				echo "Build Docker Image"
 				//"docker build -t ajisreekumar/myworks:$env.BUILD_TAG"
 				script{
-					dockerImage = docker.build("ajisreekumar/myworks:${env.BUILD_TAG}")
+					dockerImage = docker.build("ecr_repo:${env.BUILD_TAG}")
 				}
 			}
 		}
