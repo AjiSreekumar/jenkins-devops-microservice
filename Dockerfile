@@ -7,7 +7,7 @@ WORKDIR /opt/app
 
 COPY ${JAR_FILE} /app.jar
 
-COPY ops/* 
+COPY ops/RunApp /opt/app/RunApp
 
 ENV JAVA_OPTS=""
 ENTRYPOINT [ "/opt/app/bash"]
