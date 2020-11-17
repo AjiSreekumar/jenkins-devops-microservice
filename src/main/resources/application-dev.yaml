@@ -1,0 +1,7 @@
+server:
+   servlet:
+      context-path: /myapp/v1
+spring:
+   profiles:dev
+   
+   
