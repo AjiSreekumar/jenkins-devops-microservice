@@ -5,4 +5,5 @@ ADD target/*.jar app.jar
 RUN mkdir -p /app/bin
 ADD app app/
 ENV JAVA_OPTS=""
+WORKDIR /app
 ENTRYPOINT [ "/bin/bash"]
