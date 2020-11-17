@@ -2,6 +2,6 @@ FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 EXPOSE 8000
 ADD target/*.jar app.jar
-COPY ops/* /tmp/bin
+COPY ops/* /tmp
 ENV JAVA_OPTS=""
-ENTRYPOINT [ "/bin/bash"]
+ENTRYPOINT [ "bash"]
