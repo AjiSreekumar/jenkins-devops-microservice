@@ -1,13 +1,6 @@
 FROM openjdk:8-jdk-alpine
-
+VOLUME /tmp
 EXPOSE 8000
-ARG JAR_FILE=target/*.jar
-
-WORKDIR /opt/app
-
-COPY ${JAR_FILE} /app.jar
-
-COPY ops/RunApp /opt/app/RunApp
-
+ADD target/*.jar app.jar
 ENV JAVA_OPTS=""
-ENTRYPOINT [ "/opt/app/bash"]
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
