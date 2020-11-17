@@ -1,9 +1,8 @@
 FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-EXPOSE 8000
-ADD target/*.jar app.jar
-RUN mkdir -p /app/bin
-ADD app app/
-ENV JAVA_OPTS=""
+#VOLUME /tmp
 WORKDIR /app
-ENTRYPOINT [ "/bin/bash"]
+EXPOSE 8000
+ADD target/*.jar /app/app.jar
+COPY ops/* /app/
+ENV JAVA_OPTS=""
+ENTRYPOINT [ "/app/bash"]
