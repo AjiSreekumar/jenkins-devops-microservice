@@ -8,7 +8,7 @@ pipeline{
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
 	}
 	stages{
-		stage('Checkout'){
+		stage('Build Details'){
 			steps{
 				sh 'mvn --version'
 				sh 'docker --version'
@@ -26,15 +26,9 @@ pipeline{
 				sh "mvn clean compile"
 			}
 		}
-		stage('Test'){
+		stage('Run Unit Test'){
 			steps{
 				sh "mvn test"
-			}
-		}
-		stage('Integration Test'){
-			steps{
-				echo "Integration Test"
-			//	sh "mvn failsafe:integration-test failsafe:verify"
 			}
 		}
 		stage('Package'){
@@ -52,17 +46,12 @@ pipeline{
 				}
 			}
 		}
-		/* stage('Push Docker Image'){
+		stage('Approve Deployment'){
 			steps{
-				echo "Push Docker Image"
-				script{
-					docker.withRegistry('','dockerhub'){
-						dockerImage.push();
-						dockerImage.push('latest')
-					}
-				}
+				input('Proceed with deployment ?')
 			}
-		} */
+			
+		}
 		stage('Push to ECR'){
 			steps{
 				echo "Push Docker Image to AWS ECR"
@@ -74,8 +63,6 @@ pipeline{
 				}
 			}
 		}
-
-
 	} 
 	post{
 		always{
