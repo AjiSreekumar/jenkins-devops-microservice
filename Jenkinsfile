@@ -56,12 +56,12 @@ pipeline{
 			steps{
 				echo "Push Docker Image to AWS ECR"
 				//sh "docker run tc qdisc add dev eth0 root tbf rate 25kbps latency 50ms burst 2500"
-				sh "docker run dev eth0 root tbf rate 25kbps latency 50ms burst 2500"
+				//sh "docker run dev eth0 root tbf rate 25kbps latency 50ms burst 2500"
 				
 				
 				script{
 					docker.withRegistry('https://570443433644.dkr.ecr.eu-west-2.amazonaws.com', 'ecr:eu-west-2:aws-ecr'){
-						dockerImage.push();
+						//dockerImage.push();
 						dockerImage.push('latest')
 					}
 				}
