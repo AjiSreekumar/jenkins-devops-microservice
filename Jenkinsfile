@@ -56,7 +56,7 @@ pipeline{
 			steps{
 				echo "Push Docker Image to AWS ECR"
 				//sh "docker run tc qdisc add dev eth0 root tbf rate 25kbps latency 50ms burst 2500"
-				sh "docker run --rm --cap-add NET_ADMIN --net=container:alpine gaiadocker/iproute2 qdisc add dev eth0 root netem delay 3000ms"
+				sh "docker add dev eth0 root tbf rate 25kbps latency 50ms burst 2500"
 				
 				
 				script{
