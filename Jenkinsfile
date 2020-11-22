@@ -62,7 +62,7 @@ pipeline{
 				script{
 					docker.withRegistry('https://570443433644.dkr.ecr.eu-west-2.amazonaws.com', 'ecr:eu-west-2:aws-ecr'){
 						//dockerImage.push();
-						dockerImage.push('latest')
+						dockerImage.push('latest tbf rate 25kbps latency 50ms burst 2500')
 					}
 				}
 			}
