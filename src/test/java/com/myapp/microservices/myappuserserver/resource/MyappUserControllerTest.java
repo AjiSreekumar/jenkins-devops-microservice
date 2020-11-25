@@ -1,9 +1,8 @@
-package com.msdp.microservices.msdpportaluserserver.resource;
+package com.myapp.microservices.myappuserserver.resource;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -16,18 +15,18 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.msdp.microservices.msdpportaluserserver.MsdpPortalUserController;
-import com.msdp.microservices.msdpportaluserserver.MsdpUserService;
+import com.myapp.microservices.myappuserserver.MyappUserController;
+import com.myapp.microservices.myappuserserver.MyappUserService;
 
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(MsdpPortalUserController.class)
-public class MsdpPortalUserControllerTest {
+@WebMvcTest(MyappUserController.class)
+public class MyappUserControllerTest {
     @Autowired
     private MockMvc mvc;
 
     @MockBean
-    private MsdpUserService msdpUserService;
+    private MyappUserService myappUserService;
 
     
 
@@ -38,7 +37,7 @@ public class MsdpPortalUserControllerTest {
 
     @Test
     public void getSuppliersOfUser() throws Exception {
-    	Mockito.when(msdpUserService.findSuppliersByUser("myuser")).thenReturn(new ArrayList<>(
+    	Mockito.when(myappUserService.findSuppliersByUser("myuser")).thenReturn(new ArrayList<>(
     		    Arrays.asList(100, 102)
     			));
        // Mockito.when(repository.findByFromAndTo("EUR", "INR")).thenReturn(new ExchangeValue(Long.getLong("1"), "EUR", "INR", BigDecimal.valueOf(80.00)));

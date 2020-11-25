@@ -1,4 +1,4 @@
-package com.msdp.microservices.msdpportaluserserver;
+package com.myapp.microservices.myappuserserver;
 
 import java.util.List;
 
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class MsdpPortalUserController {
+public class MyappUserController {
 	
 	@Autowired
-	private MsdpUserService msdpUserService;
+	private MyappUserService myappUserService;
 	
 	@GetMapping("/")
 	public String isHealthy() {
@@ -21,13 +21,13 @@ public class MsdpPortalUserController {
 	@GetMapping("/users/{userId}/suppliers")
 	public List<Integer> getSuppliersOfUser(@PathVariable String userId) {
 		
-		return msdpUserService.findSuppliersByUser(userId);
+		return myappUserService.findSuppliersByUser(userId);
 	}
 	
 	@GetMapping("/users")
-	public List<MsdpUser> getUsers() {
+	public List<MyappUser> getUsers() {
 		
-		return msdpUserService.getUsers();
+		return myappUserService.getUsers();
 	}
 
 }
