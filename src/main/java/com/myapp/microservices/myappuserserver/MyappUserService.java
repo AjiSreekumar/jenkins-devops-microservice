@@ -5,8 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class MyappUserService {
 	
 	private static List<MyappUser> users = new ArrayList<MyappUser>();
@@ -25,6 +29,9 @@ public class MyappUserService {
 	}
 
 	public List<Integer> findSuppliersByUser(String userId) {
+		if(StringUtils.isEmpty(userId)) {
+			log.error("No userId present in the request");
+		}
 		for(MyappUser myappUser : users) {
 			if(myappUser.getUserId().equalsIgnoreCase(userId)) {
 				return myappUser.getSupplierList();
@@ -34,6 +41,7 @@ public class MyappUserService {
 	}
 	
 	public List<MyappUser> getUsers(){
+		log.debug("Finding the list of users ");
 		return users;
 	}
 
