@@ -30,7 +30,7 @@ public class MyappUserService {
 
 	public List<Integer> findSuppliersByUser(String userId) {
 		if(StringUtils.isEmpty(userId)) {
-			log.error("No userId present in the request");
+			log.error("100.80.103-No userId present in the request");
 		}
 		for(MyappUser myappUser : users) {
 			if(myappUser.getUserId().equalsIgnoreCase(userId)) {
@@ -41,7 +41,7 @@ public class MyappUserService {
 	}
 	
 	public List<MyappUser> getUsers(){
-		log.debug("Finding the list of users ");
+		log.debug("100.80.202-Finding the list of users ");
 		return users;
 	}
 

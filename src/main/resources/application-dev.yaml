@@ -4,5 +4,8 @@ server:
       context-path: /myapp/v1
 spring:
    profiles:dev
+logging:
+  level:
+    root: DEBUG
    
    

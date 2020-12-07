@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MyappUserServerApplication {
 
 	public static void main(String[] args) {
-		log.info("Application started");
+		log.info("100.80.301-Application started");
 		SpringApplication.run(MyappUserServerApplication.class, args);
 	}
 
